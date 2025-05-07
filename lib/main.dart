@@ -13,7 +13,7 @@ void main() async {
   // Request camera permission
   final status = await Permission.camera.request();
   if (!status.isGranted) {
-    print('Camera permission not granted');
+    debugPrint('Camera permission not granted');
     return;
   }
 
@@ -197,7 +197,7 @@ class _CameraScreenState extends State<CameraScreen> {
             _showPixelDataDialog();
           }
         } catch (e) {
-          print('Error processing image stream: $e');
+          debugPrint('Error processing image stream: $e');
           if (mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('Error processing image')),
@@ -211,7 +211,7 @@ class _CameraScreenState extends State<CameraScreen> {
         }
       });
     } catch (e) {
-      print('Error capturing image: $e');
+      debugPrint('Error capturing image: $e');
       setState(() {
         _isCapturing = false;
       });
@@ -312,7 +312,7 @@ class _CameraScreenState extends State<CameraScreen> {
             ),
       );
     } catch (e) {
-      print('Error showing reconstructed image: $e');
+      debugPrint('Error showing reconstructed image: $e');
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Error showing reconstructed image')),

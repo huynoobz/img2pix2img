@@ -1,7 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:img2pix2img/main.dart' as app;
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 void main() {
