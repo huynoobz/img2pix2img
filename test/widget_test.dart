@@ -25,13 +25,13 @@ void main() {
     // Verify that the app title is displayed
     expect(find.text('Image to Pixel Converter'), findsOneWidget);
 
-    // Wait for camera initialization
-    await tester.pumpAndSettle();
+    // Wait for initial frame
+    await tester.pump();
 
     // Verify that the floating action button is present
     expect(find.byType(FloatingActionButton), findsOneWidget);
 
-    // Note: We don't test for CameraPreview directly since it's wrapped in a FutureBuilder
-    // and might not be immediately available in test environment
+    // Verify that the camera preview container is present
+    expect(find.byType(FutureBuilder), findsOneWidget);
   });
 }
