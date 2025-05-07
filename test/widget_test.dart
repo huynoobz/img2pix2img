@@ -31,7 +31,7 @@ void main() {
     // Verify that the floating action button is present
     expect(find.byType(FloatingActionButton), findsOneWidget);
 
-    // Verify that the camera preview container is present
-    expect(find.byType(FutureBuilder), findsOneWidget);
+    // Verify that the camera screen is present
+    expect(find.byType(CameraScreen), findsOneWidget);
   });
 }
