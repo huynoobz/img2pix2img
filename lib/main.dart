@@ -17,12 +17,23 @@ void main() async {
     return;
   }
 
-  final cameras = await availableCameras();
-  final frontCamera = cameras.firstWhere(
-    (camera) => camera.lensDirection == CameraLensDirection.front,
-    orElse: () => cameras.first,
-  );
-  runApp(MyApp(camera: frontCamera));
+  CameraDescription camera;
+  try {
+    final cameras = await availableCameras();
+    camera = cameras.firstWhere(
+      (camera) => camera.lensDirection == CameraLensDirection.front,
+      orElse: () => cameras.first,
+    );
+  } catch (e) {
+    // If running in test mode or no cameras available, use a mock camera
+    camera = CameraDescription(
+      name: 'mock_camera',
+      lensDirection: CameraLensDirection.front,
+      sensorOrientation: 0,
+    );
+  }
+
+  runApp(MyApp(camera: camera));
 }
 
 class MyApp extends StatelessWidget {
